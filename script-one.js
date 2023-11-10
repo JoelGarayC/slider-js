@@ -33,9 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
 
       const generateSliderHTML = (sliderData, sliderClass) => `
-        <div class="slider ${sliderClass}" id="${
-        sliderClass ? 'secondSlider' : 'firstSlider'
-      }">
+        <div class="slider ${sliderClass}">
           ${sliderData.map(generateSlideHTML).join('')}
         </div>
       `;
@@ -53,49 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       duplicateSlider('slider');
       duplicateSlider('secondSlider');
-      duplicateSlider('slider');
-      duplicateSlider('secondSlider');
-
-      // Animation
-
-      const firstSlider = document.querySelector('#firstSlider');
-      const secondSlider = document.querySelector('#secondSlider');
-
-      animateSlider(firstSlider, 1);
-      animateSlider(secondSlider, 2);
-    }
-
-    function animateSlider(slider, speed) {
-      let translateValue = 0;
-      const animateSlide = () => {
-        // const slideWidth = slider.firstElementChild.offsetWidth + 24;
-        const slideWidth = slider.firstElementChild.offsetWidth;
-        const totalWidth = slideWidth * dataSlider.length;
-
-        translateValue -= speed;
-        slider.style.transform = `translateX(${translateValue}px)`;
-
-        if (Math.abs(translateValue) >= totalWidth) {
-          translateValue = 0;
-        }
-
-        if (!isMouseOver) {
-          requestAnimationFrame(() => animateSlide(slider, speed));
-        }
-      };
-
-      let isMouseOver = false;
-
-      slider.addEventListener('mouseover', () => {
-        isMouseOver = true;
-      });
-
-      slider.addEventListener('mouseout', () => {
-        isMouseOver = false;
-        requestAnimationFrame(() => animateSlide(slider, speed));
-      });
-
-      animateSlide(slider, speed);
     }
   } catch (error) {
     console.error(error);
