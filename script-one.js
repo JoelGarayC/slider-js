@@ -50,3 +50,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error(error);
   }
 });
+
+// if (!isMouseOver) {
+//   requestAnimationFrame(() => animateSlide());
+// }
+
+// let isMouseOver = false;
+
+// slider.addEventListener('mouseover', () => {
+// isMouseOver = true;
+// });
+
+// slider.addEventListener('mouseleave', () => {
+// isMouseOver = false;
+// requestAnimationFrame(() => animateSlide());
+// });

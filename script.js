@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function animateSlider(slider, speed, dataSlider) {
   let translateValue = 0;
+  let isMouseOver = false;
 
   const animateSlide = () => {
     const slideWidth = slider.firstElementChild.offsetWidth;
@@ -73,22 +74,19 @@ function animateSlider(slider, speed, dataSlider) {
     if (Math.abs(translateValue) >= totalWidth) {
       translateValue = 0;
     }
-    requestAnimationFrame(() => animateSlide());
+    if (!isMouseOver) {
+      requestAnimationFrame(() => animateSlide());
+    }
   };
+
+  slider.addEventListener('mouseover', () => {
+    isMouseOver = true;
+  });
+
+  slider.addEventListener('mouseout', () => {
+    isMouseOver = false;
+    requestAnimationFrame(() => animateSlide());
+  });
+
   requestAnimationFrame(() => animateSlide());
 }
-
-// if (!isMouseOver) {
-//   requestAnimationFrame(() => animateSlide());
-// }
-
-// let isMouseOver = false;
-
-// slider.addEventListener('mouseover', () => {
-// isMouseOver = true;
-// });
-
-// slider.addEventListener('mouseleave', () => {
-// isMouseOver = false;
-// requestAnimationFrame(() => animateSlide());
-// });
