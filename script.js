@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             src="${slideData.image}"
             alt="${slideData.title}"
             decoding="async"
-            loading="lazy"
           />
           <div class="slide-data ${isGestion ? 'gestion' : ''}">
             <h2>${slideData.title}</h2>
