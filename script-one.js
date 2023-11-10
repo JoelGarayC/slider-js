@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       duplicateSlider('slider');
       duplicateSlider('secondSlider');
+      duplicateSlider('slider');
+      duplicateSlider('secondSlider');
     }
   } catch (error) {
     console.error(error);
