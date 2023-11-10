@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await response.json();
     const dataSlider = data?.slider || [];
 
-    const isGestion = true;
+    const isGestion = false;
 
     if (dataSlider?.length === 10) {
       const middleIndex = Math.floor(dataSlider.length / 2);
