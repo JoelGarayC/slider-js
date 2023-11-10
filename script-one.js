@@ -40,9 +40,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const contentContainer = document.querySelector('.slider-wrapper');
 
-      contentContainer.innerHTML =
-        generateSliderHTML([...firstArray, ...firstArray], '') +
-        generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
+      if (contentContainer) {
+        contentContainer.innerHTML =
+          generateSliderHTML([...firstArray, ...firstArray], '') +
+          generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
+      }
     }
   } catch (error) {
     console.error(error);

@@ -42,15 +42,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const contentContainer = document.querySelector('.slider-wrapper');
 
-      contentContainer.innerHTML =
-        generateSliderHTML([...firstArray, ...firstArray], '') +
-        generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
+      if (contentContainer) {
+        contentContainer.innerHTML =
+          generateSliderHTML([...firstArray, ...firstArray], '') +
+          generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
+        const firstSlider = document.querySelector('#firstSlider');
+        const secondSlider = document.querySelector('#secondSlider');
 
-      const firstSlider = document.querySelector('#firstSlider');
-      const secondSlider = document.querySelector('#secondSlider');
-
-      animateSlider(firstSlider, 0.5, firstArray);
-      animateSlider(secondSlider, 1, secondArray);
+        const speedFirstSlider = 0.5;
+        const speedSecondSlider = 1;
+        animateSlider(firstSlider, speedFirstSlider, firstArray);
+        animateSlider(secondSlider, speedSecondSlider, secondArray);
+      }
     }
   } catch (error) {
     console.error(error);
