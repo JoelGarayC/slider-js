@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function animateSlider(slider, speed, dataSlider) {
   let translateValue = 0;
-  let isMouseOver = false;
 
   const animateSlide = () => {
     const slideWidth = slider.firstElementChild.offsetWidth;
@@ -80,11 +79,13 @@ function animateSlider(slider, speed, dataSlider) {
     }
   };
 
+  let isMouseOver = false;
+
   slider.addEventListener('mouseover', () => {
     isMouseOver = true;
   });
 
-  slider.addEventListener('mouseout', () => {
+  slider.addEventListener('mouseleave', () => {
     isMouseOver = false;
     requestAnimationFrame(() => animateSlide());
   });
