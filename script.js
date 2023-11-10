@@ -73,22 +73,22 @@ function animateSlider(slider, speed, dataSlider) {
     if (Math.abs(translateValue) >= totalWidth) {
       translateValue = 0;
     }
-
-    if (!isMouseOver) {
-      requestAnimationFrame(() => animateSlide());
-    }
-  };
-
-  let isMouseOver = false;
-
-  slider.addEventListener('mouseover', () => {
-    isMouseOver = true;
-  });
-
-  slider.addEventListener('mouseleave', () => {
-    isMouseOver = false;
     requestAnimationFrame(() => animateSlide());
-  });
-
-  animateSlide();
+  };
+  requestAnimationFrame(() => animateSlide());
 }
+
+// if (!isMouseOver) {
+//   requestAnimationFrame(() => animateSlide());
+// }
+
+// let isMouseOver = false;
+
+// slider.addEventListener('mouseover', () => {
+// isMouseOver = true;
+// });
+
+// slider.addEventListener('mouseleave', () => {
+// isMouseOver = false;
+// requestAnimationFrame(() => animateSlide());
+// });
