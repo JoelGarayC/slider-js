@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         contentContainer.innerHTML =
           generateSliderHTML([...firstArray, ...firstArray], '') +
           generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
+
         const firstSlider = document.querySelector('#firstSlider');
         const secondSlider = document.querySelector('#secondSlider');
-
         const speedFirstSlider = 0.5;
         const speedSecondSlider = 1;
         animateSlider(firstSlider, speedFirstSlider, firstArray);
