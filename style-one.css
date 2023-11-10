@@ -293,9 +293,9 @@ p {
   }
 }
 
-/* @-webkit-keyframes slider {
+@-webkit-keyframes slider {
   to {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
   }
-} */
+}

@@ -40,64 +40,51 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       `;
 
-      const duplicateSlider = (sliderClass) => {
-        const slider = document.querySelector(`.${sliderClass}`);
-        slider.innerHTML += slider.innerHTML;
-      };
-
       const contentContainer = document.querySelector('.slider-wrapper');
 
       contentContainer.innerHTML =
-        generateSliderHTML(firstArray, '') +
-        generateSliderHTML(secondArray, 'secondSlider');
-
-      duplicateSlider('slider');
-      duplicateSlider('secondSlider');
-      duplicateSlider('slider');
-      duplicateSlider('secondSlider');
-
-      // Animation
+        generateSliderHTML([...firstArray, ...firstArray], '') +
+        generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
 
       const firstSlider = document.querySelector('#firstSlider');
       const secondSlider = document.querySelector('#secondSlider');
 
-      animateSlider(firstSlider, 1);
-      animateSlider(secondSlider, 2);
-    }
-
-    function animateSlider(slider, speed) {
-      let translateValue = 0;
-      const animateSlide = () => {
-        // const slideWidth = slider.firstElementChild.offsetWidth + 24;
-        const slideWidth = slider.firstElementChild.offsetWidth;
-        const totalWidth = slideWidth * dataSlider.length;
-
-        translateValue -= speed;
-        slider.style.transform = `translateX(${translateValue}px)`;
-
-        if (Math.abs(translateValue) >= totalWidth) {
-          translateValue = 0;
-        }
-
-        if (!isMouseOver) {
-          requestAnimationFrame(() => animateSlide(slider, speed));
-        }
-      };
-
-      let isMouseOver = false;
-
-      slider.addEventListener('mouseover', () => {
-        isMouseOver = true;
-      });
-
-      slider.addEventListener('mouseout', () => {
-        isMouseOver = false;
-        requestAnimationFrame(() => animateSlide(slider, speed));
-      });
-
-      animateSlide(slider, speed);
+      animateSlider(firstSlider, 0.5, firstArray);
+      animateSlider(secondSlider, 1, secondArray);
     }
   } catch (error) {
     console.error(error);
   }
 });
+
+function animateSlider(slider, speed, dataSlider) {
+  let translateValue = 0;
+  let isMouseOver = false;
+
+  const animateSlide = () => {
+    const slideWidth = slider.firstElementChild.offsetWidth;
+    const totalWidth = slideWidth * dataSlider.length;
+
+    translateValue -= speed;
+    slider.style.transform = `translateX(${translateValue}px)`;
+
+    if (Math.abs(translateValue) >= totalWidth) {
+      translateValue = 0;
+    }
+
+    if (!isMouseOver) {
+      requestAnimationFrame(() => animateSlide());
+    }
+  };
+
+  slider.addEventListener('mouseover', () => {
+    isMouseOver = true;
+  });
+
+  slider.addEventListener('mouseout', () => {
+    isMouseOver = false;
+    requestAnimationFrame(() => animateSlide());
+  });
+
+  animateSlide();
+}
