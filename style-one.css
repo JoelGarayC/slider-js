@@ -152,7 +152,7 @@ p {
 
 body {
   align-items: center;
-  background-color: black;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -165,16 +165,16 @@ body {
   --bg-slide-g: rgba(82, 31, 68, 0.5);
 
   /* max-width: 1350px; */
-  /* max-width: 2500px; */
+  max-width: 2500px;
   overflow: hidden;
   width: 100%;
 }
 
 .slider {
   animation: slider 80s infinite linear;
-  display: inline-flex;
-  /* display: flex;
-  width: max-content; */
+  /* display: inline-flex; */
+  display: flex;
+  width: max-content;
 }
 
 .slider.secondSlider {
@@ -293,9 +293,9 @@ p {
   }
 }
 
-@-webkit-keyframes slider {
+/* @-webkit-keyframes slider {
   to {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
   }
-}
+} */

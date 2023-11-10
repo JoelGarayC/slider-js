@@ -38,21 +38,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       `;
 
-      const duplicateSlider = (sliderClass) => {
-        const slider = document.querySelector(`.${sliderClass}`);
-        slider.innerHTML += slider.innerHTML;
-      };
-
       const contentContainer = document.querySelector('.slider-wrapper');
 
       contentContainer.innerHTML =
-        generateSliderHTML(firstArray, '') +
-        generateSliderHTML(secondArray, 'secondSlider');
-
-      duplicateSlider('slider');
-      duplicateSlider('secondSlider');
-      duplicateSlider('slider');
-      duplicateSlider('secondSlider');
+        generateSliderHTML([...firstArray, ...firstArray], '') +
+        generateSliderHTML([...secondArray, ...secondArray], 'secondSlider');
     }
   } catch (error) {
     console.error(error);
