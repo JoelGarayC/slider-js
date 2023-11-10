@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const generateSlideHTML = (slideData) => `
         <a class="slide" href="${slideData.link}" target="_blank">
-          <img
-            src="${slideData.image}"
-            alt="${slideData.title}"
-            decoding="async"
-          />
+          <picture>
+            <source 
+              media="(min-width:768px)" 
+              srcset="${slideData.image}" 
+            >
+            <img
+              src="${slideData.imageMobile}"
+              alt="${slideData.title}"
+            />
+          </picture>
           <div class="slide-data ${isGestion ? 'gestion' : ''}">
             <h2>${slideData.title}</h2>
             <p>${slideData.description}</p>
@@ -28,11 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
 
       const generateSliderHTML = (sliderData, sliderClass) => `
-        <section class="slider-content">
-          <div class="slider ${sliderClass}">
-            ${sliderData.map(generateSlideHTML).join('')}
-          </div>
-        </section>
+        <div class="slider ${sliderClass}">
+          ${sliderData.map(generateSlideHTML).join('')}
+        </div>
       `;
 
       const duplicateSlider = (sliderClass) => {
